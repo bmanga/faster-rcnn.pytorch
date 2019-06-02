@@ -12,35 +12,20 @@ from __future__ import print_function
 
 __sets = {}
 from datasets.pascal_voc import pascal_voc
-from datasets.coco import coco
 from datasets.imagenet import imagenet
 from datasets.vg import vg
+from datasets.vgg import vgg
 
 import numpy as np
+
+__sets['vgg_test'] = (lambda split=1, year='2019': vgg('split', year))
+__sets['vgg'] = (lambda split=1, year='2019': vgg('split', year))
 
 # Set up voc_<year>_<split>
 for year in ['2007', '2012']:
   for split in ['train', 'val', 'trainval', 'test']:
     name = 'voc_{}_{}'.format(year, split)
     __sets[name] = (lambda split=split, year=year: pascal_voc(split, year))
-
-# Set up coco_2014_<split>
-for year in ['2014']:
-  for split in ['train', 'val', 'minival', 'valminusminival', 'trainval']:
-    name = 'coco_{}_{}'.format(year, split)
-    __sets[name] = (lambda split=split, year=year: coco(split, year))
-
-# Set up coco_2014_cap_<split>
-for year in ['2014']:
-  for split in ['train', 'val', 'capval', 'valminuscapval', 'trainval']:
-    name = 'coco_{}_{}'.format(year, split)
-    __sets[name] = (lambda split=split, year=year: coco(split, year))
-
-# Set up coco_2015_<split>
-for year in ['2015']:
-  for split in ['test', 'test-dev']:
-    name = 'coco_{}_{}'.format(year, split)
-    __sets[name] = (lambda split=split, year=year: coco(split, year))
 
 # Set up vg_<split>
 # for version in ['1600-400-20']:
