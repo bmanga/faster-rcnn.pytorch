@@ -26,7 +26,7 @@ class vgg(imdb):
   def __init__(self, image_set, year):
     imdb.__init__(self, 'vgg_' + year + '_' + image_set)
 
-    self.root = "/home/bruno/Projects/business/misc/datasets/flowcharts/scans"
+    self.root = "/home/kavan/CLionProjects/business/misc/datasets/flowcharts/scans"
     # name, paths
     self._year = year
     self._image_set = image_set
